@@ -1,0 +1,20 @@
+{
+  "paths": {
+    "src": ["src/shared", "src/client"],
+    "dist": "dist/client"
+  },
+  "builders": {
+    "webpack": {
+      "entry": "./src/shared/js/index.js"
+    }
+  },
+  "environments": {
+    "defaults": {
+      "builders": [
+        "babel",
+        "es7"
+      ]
+    }
+  }
+}
+
