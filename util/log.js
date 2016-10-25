@@ -1,20 +1,18 @@
-console.log('loading logger')
 // logging utilities
 // all the functions in here are completely elided unless environments.includes('development')
 
 import { curry } from 'ramda'
-import config from 'config/app'
-import inspect from 'util/inspect'
+import inspect from './inspect'
 
 // console.log-like log function
 // log => ...any -> null
 export const log = (...values) => {
-  if (config.debug) {
-    console.log(
-      '\n',
-      values.map(inspect).join('\n')
-    )
-  }
+  // if (config.debug) {
+  console.log(
+    '\n',
+    values.map(inspect).join('\n')
+  )
+  // }
   return null
 }
 

@@ -1,15 +1,10 @@
 {
   "name": "crumbles",
   "version": "0.0.1",
-  "main": "dist/server/index.js",
-  "browser": "dist/client/index.js",
-  "repository": {
-    "url": "git@github.com:theuprising/crumbles.git",
-    "type": "git"
-  },
+  "description": "utilities",
   "author": "Andrew Monks <andrew@theuprisingcreative.com>",
-  "license": "ISC",
-  "devDependencies": {
-    "snackpack": "^2.5.3"
+  "license": "MIT",
+  "dependencies": {
+    "ramda": "^0.22.1"
   }
 }
