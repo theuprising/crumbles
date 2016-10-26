@@ -2,14 +2,14 @@
 
 import { compose, join, map } from 'ramda'
 
-const decode = compose(
+export const decode = compose(
   decodeURIComponent,
   join(''),
   map(c => `%${('00' + c.charCodeAt(0).toString(16)).slice(-2)}`),
   window.atob
 )
 
-const encode = compose(
+export const encode = compose(
   window.btoa,
   str => str.replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode(`0x${p1}`)),
   encodeURIComponent
