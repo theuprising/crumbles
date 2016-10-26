@@ -12,6 +12,10 @@ requires-port@1.0.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
 
+unibabel:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/unibabel/-/unibabel-2.1.3.tgz#c80aeb2fa0503bbce513fe28425e0aee8ef1f69f"
+
 url-parse:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.1.6.tgz#ab8ff5aea1388071961255e2236147c52ca5fc48"

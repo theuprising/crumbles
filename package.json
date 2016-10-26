@@ -6,6 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "ramda": "^0.22.1",
+    "unibabel": "^2.1.3",
     "url-parse": "^1.1.6"
   }
 }
