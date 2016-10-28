@@ -1,5 +1,6 @@
 import { curry } from 'ramda'
 
+// eg: const add5 = iterate(5, add(1))
 // iterate : Number -> (Any -> Any) -> Any -> Any
 const _iterate = (n, fn, val) => {
   let i = 0
