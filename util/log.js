@@ -9,10 +9,14 @@ import inspect from './inspect'
 // log : ...any -> null
 export const log = (...values) => {
   // if (config.debug) {
-  console.log(
-    '\n',
-    values.map(inspect).join('\n')
-  )
+  try {
+    console.log(
+      '\n',
+      values.map(inspect).join('\n')
+    )
+  } catch (e) {
+    console.log('\n', 'logging failure')
+  }
   // }
   return null
 }
