@@ -62,5 +62,5 @@ const sharer = ({facebookAppId}) => {
   })
 }
 
-export default sharer()
+export default sharer
 
