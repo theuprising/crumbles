@@ -44,7 +44,6 @@ const browserEntry = assoc(
 )
 
 const babel = evolve({
-  entry: map(prepend('babel-polyfill')),
   module: {
     loaders: append({
       test: /\.jsx?$/,

@@ -26,6 +26,15 @@
     ]
   },
   "babel": {
+    "plugins": [
+      [
+        "transform-runtime",
+        {
+          "polyfill": false,
+          "regenerator": true
+        }
+      ]
+    ],
     "presets": [
       "latest",
       "stage-0",
