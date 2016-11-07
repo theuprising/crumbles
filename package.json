@@ -8,7 +8,7 @@
   "browser": "./dist/browser.js",
   "license": "MIT",
   "scripts": {
-    "postinstall": "flow-typed install",
+    "install:types": "flow-typed install",
     "test": "node ./node_modules/.bin/snackstack test",
     "repl": "node ./node_modules/.bin/snackstack repl",
     "build": "node ./node_modules/.bin/snackstack build"
