@@ -1,7 +1,7 @@
 // logging utilities
 // all the functions in here are completely elided unless environments.includes('development')
 
-import { choose } from './coll'
+import { choose } from './array'
 import { curry } from 'ramda'
 import inspect from './inspect'
 
@@ -9,10 +9,14 @@ import inspect from './inspect'
 // log : ...any -> null
 export const log = (...values) => {
   // if (config.debug) {
-  console.log(
-    '\n',
-    values.map(inspect).join('\n')
-  )
+  try {
+    console.log(
+      '\n',
+      values.map(inspect).join('\n')
+    )
+  } catch (e) {
+    console.log('\n', 'logging failure')
+  }
   // }
   return null
 }
