@@ -29,17 +29,24 @@ const webpack = always({
   }
 })
 
+const browserEntry = compose(
+  assoc(
+    'entry',
+    {
+      browser: ['./src/index.js']
+    }
+  ),
+  evolve({
+    resolve: assoc(
+      'packageAlias': 'browser'
+    )
+  })
+)
+
 const nodeEntry = assoc(
   'entry',
   {
     node: ['./src/index.js']
-  }
-)
-
-const browserEntry = assoc(
-  'entry',
-  {
-    browser: ['./src/index.js']
   }
 )
 
