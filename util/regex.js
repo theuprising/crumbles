@@ -4,7 +4,7 @@ const _domain = new RegExp(/((?=[a-z0-9-]{1,63}\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\
 export const domain = wrap(_domain)
 
 export const email = wrap((() => {
-  const user = new RegExp(/([a-z0-9!#$%&'*+\/=?\^_`{|}~\-]+)/)
+  const user = new RegExp(/([a-z0-9!#$%&'\.*+\/=?\^_`{|}~\-]+)/)
   return new RegExp(user.source + '@' + _domain.source)
 })())
 
@@ -24,4 +24,3 @@ export const email = wrap((() => {
 // test(true, 'xn-onks-99b.com', domain)
 
 // console.log('done')
-
