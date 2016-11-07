@@ -6,12 +6,21 @@
   ],
   "main": "./dist/node.js",
   "browser": "./dist/browser.js",
+  "nodeAliases": {
+    "./src/base64/index.js": "./src/base64/index.browser.js",
+    "./src/inspect/index.js": "./src/base64/index.node.js"
+  },
+  "browserAliases": {
+    "./src/base64/index.js": "./src/base64/index.browser.js",
+    "./src/inspect/index.js": "./src/inspect/index.browser.js"
+  },
   "license": "MIT",
   "scripts": {
     "install:types": "flow-typed install",
     "test": "node ./node_modules/.bin/snackstack test",
     "repl": "node ./node_modules/.bin/snackstack repl",
-    "build": "node ./node_modules/.bin/snackstack build"
+    "build": "node ./node_modules/.bin/snackstack build",
+    "prepublish": "yarn build"
   },
   "pre-commit": "test",
   "standard": {
@@ -58,7 +67,7 @@
     "flow-typed": "^2.0.0",
     "jest": "^16.0.2",
     "pre-commit": "^1.1.3",
-    "snackstack": "0.0.3",
+    "snackstack": "0.0.5",
     "standard": "^8.5.0",
     "webpack": "2.1.0-beta.25"
   }

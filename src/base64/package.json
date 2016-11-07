@@ -1,6 +1,0 @@
-{
-  "name": "base64",
-  "private": true,
-  "main": "index.node.js",
-  "browser": "index.browser.js"
-}

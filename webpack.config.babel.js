@@ -29,19 +29,21 @@ const webpack = always({
   }
 })
 
-const browserEntry = compose(
-  assoc(
-    'entry',
-    {
-      browser: ['./src/index.js']
-    }
-  ),
+const browserEntry = assoc(
+  'entry',
+  {
+    browser: ['./src/index.js']
+  }
+)
+
+const browser = compose(
   evolve({
     resolve: assoc(
       'aliasFields',
-      ['browser']
+      ['browserAliases']
     )
-  })
+  }),
+  assoc('target', 'web')
 )
 
 const nodeEntry = assoc(
@@ -81,6 +83,12 @@ const makeExterns = compose(
 )
 
 const node = compose(
+  evolve({
+    resolve: assoc(
+      'aliasFields',
+      ['nodeAliases']
+    )
+  }),
   assocPath(['output', 'libraryTarget'], 'commonjs2'),
   assoc('externals', makeExterns(fs.readdirSync('node_modules'))),
   assoc('target', 'node'),
@@ -99,8 +107,11 @@ const nodeConfig = compose(
 
 const browserConfig = compose(
   babel,
+  browser,
   browserEntry,
   webpack
 )()
+
+console.log(browserConfig)
 
 export default [nodeConfig, browserConfig]

@@ -1,6 +1,8 @@
 import { inspect } from 'util'
 import { type } from 'ramda'
 
+console.log(inspect)
+
 export default v =>
   type(v) !== 'String'
     ? inspect(v, {

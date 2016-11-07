@@ -3,25 +3,25 @@
 import { compose, join, map } from 'ramda'
 
 export const decode = compose(
-  decodeURIComponent,
+  thing => decodeURIComponent(thing),
   join(''),
   map(c => `%${('00' + c.charCodeAt(0).toString(16)).slice(-2)}`),
-  window.atob
+  thing => window.atob(thing)
 )
 
 export const encode = compose(
-  window.btoa,
+  thing => window.btoa(thing),
   str => str.replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode(`0x${p1}`)),
-  encodeURIComponent
+  thing => encodeURIComponent(thing)
 )
 
 export const deserialize = compose(
-  JSON.parse,
+  thing => JSON.parse(thing),
   decode
 )
 
 export const serialize = compose(
   encode,
-  JSON.stringify
+  thing => JSON.stringify(thing)
 )
 
