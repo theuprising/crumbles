@@ -1,4 +1,4 @@
-import { objToQueryString } from './util/url'
+import { objToQueryString } from './url'
 
 // sharer : Config -> {
 //   tumblr: String -> String -> String,
