@@ -7,7 +7,7 @@
   "main": "./dist/node.js",
   "browser": "./dist/browser.js",
   "nodeAliases": {
-    "./src/base64/index.js": "./src/base64/index.browser.js",
+    "./src/base64/index.js": "./src/base64/index.node.js",
     "./src/inspect/index.js": "./src/base64/index.node.js"
   },
   "browserAliases": {
