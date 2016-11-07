@@ -38,7 +38,8 @@ const browserEntry = compose(
   ),
   evolve({
     resolve: assoc(
-      'packageAlias': 'browser'
+      'aliasFields',
+      ['browser']
     )
   })
 )
@@ -89,16 +90,17 @@ const node = compose(
   })
 )
 
-export default [
-  compose(
-    node,
-    babel,
-    nodeEntry,
-    webpack
-  )(),
-  compose(
-    babel,
-    browserEntry,
-    webpack
-  )()
-]
+const nodeConfig = compose(
+  node,
+  babel,
+  nodeEntry,
+  webpack
+)()
+
+const browserConfig = compose(
+  babel,
+  browserEntry,
+  webpack
+)()
+
+export default [nodeConfig, browserConfig]
