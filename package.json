@@ -6,14 +6,6 @@
   ],
   "main": "./dist/node.js",
   "browser": "./dist/browser.js",
-  "nodeAliases": {
-    "./src/base64/index.js": "./src/base64/index.node.js",
-    "./src/inspect/index.js": "./src/base64/index.node.js"
-  },
-  "browserAliases": {
-    "./src/base64/index.js": "./src/base64/index.browser.js",
-    "./src/inspect/index.js": "./src/inspect/index.browser.js"
-  },
   "license": "MIT",
   "scripts": {
     "install:types": "flow-typed install",

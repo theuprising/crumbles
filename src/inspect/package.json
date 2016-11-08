@@ -1,0 +1,7 @@
+{
+  "name": "inspect",
+  "private": true,
+  "main": "index.node.js",
+  "browser": "index.browser.js"
+}
+
