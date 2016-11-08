@@ -1,4 +1,5 @@
 export * as array from './array'
+export * as auth from './auth'
 export * as base64 from './base64'
 export * as fn from './fn'
 export * as log from './log'
