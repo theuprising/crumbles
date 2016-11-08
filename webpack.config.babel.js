@@ -2,6 +2,9 @@ import path from 'path'
 import fs from 'fs'
 import { assoc, assocPath, compose, map, filter, always, evolve, prepend, append } from 'ramda'
 
+const projectPackage = require(path.join(process.cwd(), 'package.json'))
+const { name: projectName } = projectPackage
+
 const webpack = always({
   module: {
     noParse: /^\..+$/, // do not parse hidden files
@@ -82,14 +85,21 @@ const makeExterns = compose(
   map(m => [m, `commonjs ${m}`])
 )
 
+const library = evolve({
+  output: compose(
+    assoc('library', projectName),
+    assoc('libraryTarget', 'commonjs2')
+  )
+})
+
 const node = compose(
+  assocPath(['output', 'libraryTarget'], 'commonjs2'),
   evolve({
     resolve: assoc(
       'aliasFields',
       ['nodeAliases']
     )
   }),
-  assocPath(['output', 'libraryTarget'], 'commonjs2'),
   assoc('externals', makeExterns(fs.readdirSync('node_modules'))),
   assoc('target', 'node'),
   assoc('node', {
@@ -99,6 +109,7 @@ const node = compose(
 )
 
 const nodeConfig = compose(
+  library,
   node,
   babel,
   nodeEntry,
@@ -106,6 +117,7 @@ const nodeConfig = compose(
 )()
 
 const browserConfig = compose(
+  library,
   babel,
   browser,
   browserEntry,
