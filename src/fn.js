@@ -1,8 +1,13 @@
+// @flow
+
 import { curry } from 'ramda'
 
-// eg: const add5 = iterate(5, add(1))
-// iterate : Number -> (Any -> Any) -> Any -> Any
-const _iterate = (n, fn, val) => {
+/**
+ * repeat a function n times, invoking it on its result
+ * @example
+ * const add5 = iterate(5, add(1))
+ */
+const _iterate = (n: number, fn: Function, val: any): any => {
   let i = 0
   let v = val
   while (i < n) {

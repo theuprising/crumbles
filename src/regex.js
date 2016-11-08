@@ -1,3 +1,5 @@
+// @flow
+
 const wrap = regexp => new RegExp('^' + regexp.source + '$')
 
 const _domain = new RegExp(/((?=[a-z0-9-]{1,63}\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,63}/)
