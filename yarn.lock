@@ -6426,9 +6426,9 @@ snackship@^0.0.36:
     commander "^2.9.0"
     s3-cli "^0.13.0"
 
-snackstack@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/snackstack/-/snackstack-0.0.5.tgz#347e5711261cf518df85619e2dd424dd1794d56d"
+snackstack@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/snackstack/-/snackstack-0.0.7.tgz#c8f9936577393a689f185870f5b2a9c04e6ba65c"
   dependencies:
     babel "^6.5.2"
     babel-cli "^6.18.0"
