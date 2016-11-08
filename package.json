@@ -13,7 +13,7 @@
     "repl": "node ./node_modules/.bin/snackstack repl",
     "build": "node ./node_modules/.bin/snackstack build",
     "docs": "node ./node_modules/.bin/snackstack docs",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build; npm run docs"
   },
   "pre-commit": "test",
   "standard": {
