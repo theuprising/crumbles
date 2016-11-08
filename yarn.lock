@@ -2344,7 +2344,7 @@ eslint-loader@^1.6.1:
     object-assign "^4.0.1"
     object-hash "^1.1.4"
 
-eslint-plugin-flowtype@^2.25.0:
+eslint-plugin-flowtype, eslint-plugin-flowtype@^2.25.0:
   version "2.25.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-2.25.0.tgz#c462521ab20ce3d8db819f10ad3c9f1bc7f3f819"
   dependencies:

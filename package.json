@@ -56,6 +56,7 @@
   "devDependencies": {
     "babel-loader": "^6.2.7",
     "documentation": "^4.0.0-beta12",
+    "eslint-plugin-flowtype": "^2.25.0",
     "flow-bin": "^0.34.0",
     "flow-typed": "^2.0.0",
     "jest": "^16.0.2",
