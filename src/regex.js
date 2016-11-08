@@ -8,19 +8,3 @@ export const email = wrap((() => {
   return new RegExp(user.source + '@' + _domain.source)
 })())
 
-// // this is kinda like testing...
-// //
-// const test = (expectation, str, regexp) => {
-//   const result = regexp.test(str)
-//   const msg = result === expectation
-//     ? '👍' : '👎'
-//   console.log(msg, str, regexp.test(str))
-// }
-
-// test(true, 'a+b@monks.co', email)
-// test(false, 'a@mo+nks.co', email)
-// test(false, '$%$ a @monks.co', email)
-// test(true, 'monks.co', domain)
-// test(true, 'xn-onks-99b.com', domain)
-
-// console.log('done')
