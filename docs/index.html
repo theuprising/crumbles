@@ -35,6 +35,26 @@
               
                 
                 <li><a
+                  href='#basicauthheader'
+                  class="">
+                  basicAuthHeader
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#parseaddress'
+                  class="">
+                  parseAddress
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#_iterate'
                   class="">
                   _iterate
@@ -111,6 +131,175 @@
       <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]
 <span class="hljs-keyword">const</span> choice = choose(arr)
 arr.indexOf(choice) &gt; <span class="hljs-number">-1</span></pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='basicauthheader'>
+      basicAuthHeader
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>generate a header for http basic auth</p>
+
+
+  <div class='pre p1 fill-light mt0'>basicAuthHeader</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>$0</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code> 
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>$0.username</span> <code class='quiet'>any</code>
+                  </td>
+                  <td class='break-word'><span></span></td>
+                </tr>
+              
+                <tr>
+                  <td class='break-word'><span class='code bold'>$0.password</span> <code class='quiet'>any</code>
+                  </td>
+                  <td class='break-word'><span></span></td>
+                </tr>
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> username = <span class="hljs-string">'user'</span>
+<span class="hljs-keyword">const</span> password = <span class="hljs-string">'password'</span>
+<span class="hljs-keyword">const</span> headers = { <span class="hljs-attr">Authorization</span>: basicAuthHeader({username, password}) }</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='parseaddress'>
+      parseAddress
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Parse an email address string</p>
+
+
+  <div class='pre p1 fill-light mt0'>parseAddress</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>str</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code> 
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>{email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, name: [<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>]}</code>
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> { email, name } = parseAddress(<span class="hljs-string">'Andrew &lt;a@monks.co&gt;'</span>)
+<span class="hljs-keyword">const</span> { email } = parseAddress(<span class="hljs-string">'a@monks.co'</span>)</pre>
     
   
 
