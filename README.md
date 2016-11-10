@@ -1,5 +1,7 @@
 # crumbles
 
+[**docs**](https://theuprising.github.io/crumbles/)
+
 isomorphic utilities we use across projects
 
 anything you put in here _must_ have the same api on both node and browser.
