@@ -1,147 +1,84 @@
 // @flow
-type Delim = string | Object
-type StringTransformer = (value: string) => string
-type StringTransformerFactory = (delim: Delim) => StringTransformer
+type Transformer = (value: string) => string
+type Unformatter = (from: string) => [string]
+type Formatter = (from: [string]) => string
 
-import { compose as comp, join, map, split, slice, toUpper, toLower } from 'ramda'
+type Format = {
+  from: Unformatter,
+  to: Formatter
+}
+type Formats = { [key: string]: Format }
+
+import { compose as comp, join, map, split, head, tail, complement, flip, contains, toUpper, toLower, pipe, when } from 'ramda'
 export { toLower, toUpper }
 
-const snakeDelim: string = '_'
-const kebabDelim: string = '-'
-const camelDelim: Object = /(?=[A-Z])/
-
 /**
+ * @function string.capitalize
  * capitalize a string
  */
-export const capitalize: StringTransformer = str =>
-  `${toUpper(str.charAt(0))}${slice(1, Infinity, str)}`
+export const capitalize: Transformer = str =>
+  `${toUpper(head(str))}${tail(str)}`
 
 /**
- * make a function that camelizes on a desired delimiter
+ * @function string.uncapitalize
+ * uncapitalize a string
  */
-export const toCamel: StringTransformerFactory = delim =>
-  comp(join(''), map(capitalize), split(delim))
+export const uncapitalize: Transformer = str =>
+  `${toLower(head(str))}${tail(str)}`
+
+const delimToFormat = (delim: string): Format => ({
+  from: split(delim),
+  to: join(delim)
+})
+
+// https://www.gpo.gov/fdsys/pkg/GPO-STYLEMANUAL-2008/html/GPO-STYLEMANUAL-2008-5.htm
+// section 3.49.
+/**
+ * @const wordsNotCapitalizedInTitles
+ * an array of the words not capitalized in titles
+ */
+export const wordsNotCapitalizedInTitles = [
+  'a', 'an', 'the', 'at', 'by', 'for', 'in', 'of', 'on', 'to', 'up', 'and', 'as', 'but', 'or', 'nor'
+]
+const shouldBeCapitalizedInTitle = complement(flip(contains)(wordsNotCapitalizedInTitles))
 
 /**
- * make a function that camelizes and lowercases on a desired delimiter
+ * @const string.formats
+ * a collection of string formats.
  */
-export const toLowerCamel: StringTransformerFactory = delim =>
-  comp(toLower, toCamel(delim))
+export const formats = ((): Formats => {
+  const camel = {
+    from: pipe(split(/(?=[A-Z])/), map(toLower)),
+    to: pipe(map(capitalize), join(''))
+  }
+  const kebab = delimToFormat('-')
+  const snake = delimToFormat('_')
+  const space = delimToFormat(' ')
+  const sentence = {
+    from: pipe(uncapitalize, space.from),
+    to: pipe(space.to, capitalize)
+  }
+  const title = {
+    from: pipe(
+      space.from,
+      map(uncapitalize)
+    ),
+    to: pipe(
+      map(uncapitalize),
+      map(when(
+        shouldBeCapitalizedInTitle,
+        capitalize
+      )),
+      space.to,
+      capitalize
+    )
+  }
+  return Object.freeze({camel, kebab, snake, space, sentence, title})
+})()
 
 /**
- * make a function that kebabizes on a desired delimiter
+ * @function string.convert
+ * convert a string between two formats `(Format, Format) -> string -> string`
  */
-export const toKebab: StringTransformerFactory = delim =>
-  comp(join(kebabDelim), split(delim))
+export const convert = (from: Format, to: Format): Transformer => comp(to.to, from.from)
 
-/**
- * make a function that kebabizes and lowercases on a desired delimiter
- */
-export const toLowerKebab: StringTransformerFactory = delim =>
-  comp(toLower, toKebab(delim))
-
-/**
- * make a function that kebabizes and uppercases on a desired delimiter
- */
-export const toUpperKebab: StringTransformerFactory = delim =>
-  comp(toUpper, toKebab(delim))
-
-/**
- * make a function that snakeizes on a desired delimiter
- */
-export const toSnake: StringTransformerFactory = delim =>
-  comp(join(camelDelim), split(delim))
-
-/**
- * make a function that snakeizes and lowercases on a desired delimiter
- */
-export const toLowerSnake: StringTransformerFactory = delim =>
-  comp(toLower, toSnake(delim))
-
-/**
- * make a function that snakizes and uppercases on a desired delimiter
- */
-export const toUpperSnake: StringTransformerFactory = delim =>
-  comp(toUpper, toSnake(delim))
-//                                                                          !!! Y !!!
-export const toScreamingSnake: StringTransformerFactory = toUpperSnake // <==========(:O)
-
-/**
- * transform a string from snakecase to camelcase
- */
-export const snakeToCamel: StringTransformer = toCamel(snakeDelim)
-
-/**
- * transform a string from kebabcase to camelcase
- */
-export const kebabToCamel: StringTransformer = toCamel(kebabDelim)
-
-/**
- * transform a string from snakecase to lowercase camelcase
- */
-export const snakeToLowerCamel: StringTransformer = toLowerCamel(snakeDelim)
-
-/**
- * transform a string from kebabcase to lowercase camelcase
- */
-export const kebabToLowerCamel: StringTransformer = toLowerCamel(kebabDelim)
-
-/**
- * transform a string from snakecase to kebabcase
- */
-export const snakeToKebab: StringTransformer = toKebab(snakeDelim)
-
-/**
- * transform a string from camelcase to kebabcase
- */
-export const camelToKebab: StringTransformer = toKebab(camelDelim)
-
-/**
- * transform a string from snakecase to lowercase kebabcase
- */
-export const snakeToLowerKebab: StringTransformer = toLowerKebab(snakeDelim)
-
-/**
- * transform a string from camelcase to lowercase kebabcase
- */
-export const camelToLowerKebab: StringTransformer = toLowerKebab(camelDelim)
-
-/**
- * transform a string from snakecase to uppercase kebabcase
- */
-export const snakeToUpperKebab: StringTransformer = toUpperKebab(snakeDelim)
-
-/**
- * transform a string from camelcase to uppercase kebabcase
- */
-export const camelToUpperKebab: StringTransformer = toUpperKebab(camelDelim)
-
-/**
- * transform a string from camelcase to snakeCase
- */
-export const camelToSnake: StringTransformer = toSnake(camelDelim)
-
-/**
- * transform a string from kebabcase to snakeCase
- */
-export const kebabToSnake: StringTransformer = toSnake(kebabDelim)
-
-/**
- * transform a string from camelcase to lowercase snakeCase
- */
-export const camelToLowerSnake: StringTransformer = toLowerSnake(camelDelim)
-
-/**
- * transform a string from kebabcase to lowercase snakeCase
- */
-export const kebabToLowerSnake: StringTransformer = toLowerSnake(kebabDelim)
-
-/**
- * transform a string from camelcase to uppercase snakeCase
- */
-export const camelToUpperSnake: StringTransformer = toUpperSnake(camelDelim)
-
-/**
- * transform a string from kebabcase to uppercase snakeCase
- */
-export const kebabToUpperSnake: StringTransformer = toUpperSnake(kebabDelim)
