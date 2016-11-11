@@ -1,9 +1,9 @@
 // logging utilities
 // all the functions in here are completely elided unless environments.includes('development')
 
-import { log, info, spy, affirm } from './log'
+export { log, info, spy, affirm } from './log'
+
 import { partial } from 'ramda'
-export { log, info, spy, affirm }
 
 // browser colors
 const styles = {
