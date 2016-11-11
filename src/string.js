@@ -1,3 +1,8 @@
+// @flow
+type Delim = string | Object
+type StringTransformer = (value: string) => string
+type StringTransformerFactory = (delim: Delim) => StringTransformer
+
 import { compose as comp, join, map, split, slice, toUpper, toLower } from 'ramda'
 export { toLower, toUpper }
 

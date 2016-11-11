@@ -1,9 +1,9 @@
 // logging utilities
 // all the functions in here are completely elided unless environments.includes('development')
 
-import { choose } from './array'
+import { choose } from '../array'
 import { curry } from 'ramda'
-import inspect from './inspect'
+import inspect from '../inspect'
 
 // console.log-like log function
 // log : ...any -> null
