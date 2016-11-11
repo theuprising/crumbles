@@ -55,16 +55,19 @@ function wrapMethodWithStyle (method = 'log', style = 'none', message, ...values
   }
 }
 
-// console.warn-like log function
-// warn : ...any -> null
+/**
+ * console.warn-like log function `...any -> null`
+ */
 export const warn = partial(wrapMethodWithStyle, ['warn', 'warn'])
 
-// console.error-like log function
-// error : ...any -> null
+/**
+ * console.error-like log function `...any -> null`
+ */
 export const error = partial(wrapMethodWithStyle, ['error', 'error'])
 
-// console.log-like log function where a color and a label can be added before output
-// labeled : (color, label) -> newColoredLogger(...any) -> null
+/**
+ * console.log-like log function where a color and a label can be added before output `(color, label) -> newColoredLogger(...any) -> null`
+ */
 export function labeled (color = 'blue', label = 'log') {
   return partial(wrapMethodWithStyle, ['log', `color: ${color};`], label)
 }
