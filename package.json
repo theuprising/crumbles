@@ -15,7 +15,7 @@
     "docs": "snackstack docs",
     "prepublish": "npm run test && npm run build && npm run docs"
   },
-  "pre-commit": "test",
+  "precommit": "test",
   "standard": {
     "parser": "babel-eslint",
     "plugins": [
