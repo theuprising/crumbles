@@ -26,13 +26,12 @@ const styles = {
 // maps styles into a set to apply to the console
 const styleSets = {
   'none': '',
-  'info': styles.cyan,
   'error': styles.red,
   'warn': [styles.yellow, styles.bold].join(' ')
 }
 
 // test to see if we support colors
-function canUseColors() {
+function canUseColors () {
   // is webkit? http://stackoverflow.com/a/16459606/376773
   // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
   return (typeof document !== 'undefined' && 'WebkitAppearance' in document.documentElement.style) ||
@@ -53,7 +52,7 @@ function wrapMethodWithStyle (method = 'log', style = 'none', message, ...values
     logger('%c%s', styled, message, ...values)
   } else {
     logger(`[${method}]`, message, ...values)
-  } 
+  }
 }
 
 // console.warn-like log function
@@ -64,12 +63,8 @@ export const warn = partial(wrapMethodWithStyle, ['warn', 'warn'])
 // error : ...any -> null
 export const error = partial(wrapMethodWithStyle, ['error', 'error'])
 
-// console.info-like log function
-// info : ...any -> null
-export const info = partial(wrapMethodWithStyle, ['info', 'info'])
-
 // console.log-like log function where a color and a label can be added before output
 // labeled : (color, label) -> newColoredLogger(...any) -> null
-export const function labeled (color = 'blue', label = 'log') {
+export function labeled (color = 'blue', label = 'log') {
   return partial(wrapMethodWithStyle, ['log', `color: ${color};`], label)
 }

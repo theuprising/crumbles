@@ -25,8 +25,7 @@ const styles = {
 }
 // maps styles into a set to apply to the console
 const styleSets = {
-  'none': ['', '']
-  'info': styles.cyan,
+  'none': ['', ''],
   'error': styles.red,
   'warn': styles.yellow.concat(styles.bold)
 }
@@ -46,7 +45,7 @@ function wrapMethodWithStyle (method = 'log', style = 'none', message, ...values
     logger(`${styled[0]}${message}${styled[1]}`, ...values)
   } else {
     logger(`[${method}]`, message, ...values)
-  } 
+  }
 }
 
 // console.warn-like log function
@@ -57,12 +56,8 @@ export const warn = partial(wrapMethodWithStyle, ['warn', 'warn'])
 // error : ...any -> null
 export const error = partial(wrapMethodWithStyle, ['error', 'error'])
 
-// console.info-like log function
-// info : ...any -> null
-export const info = partial(wrapMethodWithStyle, ['info', 'info'])
-
 // console.log-like log function where a color and a label can be added before output
 // labeled : (color, label) -> newColoredLogger(...any) -> null
-export const function labeled (color = 'blue', label = 'log') {
+export function labeled (color = 'blue', label = 'log') {
   return partial(wrapMethodWithStyle, ['log', `color: ${color};`], label)
 }
