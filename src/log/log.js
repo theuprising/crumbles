@@ -8,16 +8,16 @@ import inspect from '../inspect'
 // console.log-like log function
 // log : ...any -> null
 export const log = (...values) => {
-  // if (config.debug) {
-  try {
-    console.log(
-      '\n',
-      values.map(inspect).join('\n')
-    )
-  } catch (e) {
-    console.log('\n', 'logging failure')
+  if (JSON.stringify(process.env.NODE_ENV) !== JSON.stringify('production')) {
+    try {
+      console.log(
+        '\n',
+        values.map(inspect).join('\n')
+      )
+    } catch (e) {
+      console.log('\n', 'logging failure')
+    }
   }
-  // }
   return null
 }
 
@@ -40,7 +40,7 @@ export const spy = info('spy')
 
 // nullary side effect
 export const affirm = () =>
-  console.log(
+  log(
     choose([
       '👍🏻',
       '👍🏼',
