@@ -49,12 +49,12 @@
     ]
   },
   "dependencies": {
-    "babel-preset-latest": "^6.16.0",
-    "babel-preset-stage-0": "^6.16.0",
     "ramda": "0.21.x"
   },
   "devDependencies": {
     "babel-loader": "^6.2.7",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
     "documentation": "^4.0.0-beta12",
     "eslint-plugin-flowtype": "^2.25.0",
     "flow-bin": "^0.34.0",
