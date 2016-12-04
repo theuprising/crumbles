@@ -11,7 +11,6 @@ export const objToQueryString = compose(
     `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`
   )
 )
-console.log('string', objToQueryString({a: 1, b: 2}))
 
 export const queryStringToObj = compose(
   nestedArrays => {
