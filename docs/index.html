@@ -105,6 +105,16 @@
               
                 
                 <li><a
+                  href='#reactmanagestate'
+                  class="">
+                  react.manageState
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#capitalize'
                   class="">
                   capitalize
@@ -863,6 +873,77 @@ once(<span class="hljs-number">1</span>) <span class="hljs-comment">// -&gt; [1,
 
   
 
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='reactmanagestate'>
+      react.manageState
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Higher-order component abstraction for adding state management to a dumb component.</p>
+<ul>
+<li>state</li>
+<li>setState</li>
+</ul>
+<p>takes two props also:</p>
+<ul>
+<li>Component</li>
+<li>initialState</li>
+</ul>
+
+
+  <div class='pre p1 fill-light mt0'>react.manageState</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>const Counter = ({state, setState}) =&gt;
+  &lt;div&gt;
+    {state}
+    &lt;button onClick={() =&gt; setState(state + 1)}&gt;
+      Increment
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+const ManagedCounter = manageState({Component: Counter, initialState: 0})
+
+&lt;ManagedCounter /&gt;</pre>
+    
   
 
   

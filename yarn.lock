@@ -7423,7 +7423,7 @@ untildify@^2.1.0:
   dependencies:
     os-homedir "^1.0.0"
 
-url-parse@^1.1.1:
+url-parse, url-parse@^1.1.1:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.1.7.tgz#025cff999653a459ab34232147d89514cc87d74a"
   dependencies:
