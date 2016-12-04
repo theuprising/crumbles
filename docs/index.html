@@ -55,9 +55,19 @@
               
                 
                 <li><a
-                  href='#_iterate'
+                  href='#fniterate'
                   class="">
-                  _iterate
+                  fn.iterate
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#fnnorepeat'
+                  class="">
+                  fn.noRepeat
                   
                 </a>
                 
@@ -598,8 +608,8 @@ arr.indexOf(choice) &gt; <span class="hljs-number">-1</span></pre>
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='_iterate'>
-      _iterate
+    <h3 class='fl m0' id='fniterate'>
+      fn.iterate
     </h3>
     
     
@@ -609,7 +619,7 @@ arr.indexOf(choice) &gt; <span class="hljs-number">-1</span></pre>
   <p>repeat a function n times, invoking it on its result</p>
 
 
-  <div class='pre p1 fill-light mt0'>_iterate</div>
+  <div class='pre p1 fill-light mt0'>fn.iterate</div>
 
   
 
@@ -620,40 +630,9 @@ arr.indexOf(choice) &gt; <span class="hljs-number">-1</span></pre>
   
 
   
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>n</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code> 
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>fn</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>)</code> 
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>val</span> <code class='quiet'>(any)</code> 
-          </div>
-          
-        </div>
-      
-    </div>
-  
 
   
 
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>any</code>
-    
   
 
   
@@ -663,6 +642,65 @@ arr.indexOf(choice) &gt; <span class="hljs-number">-1</span></pre>
     
       
       <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> add5 = iterate(<span class="hljs-number">5</span>, add(<span class="hljs-number">1</span>))</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='fnnorepeat'>
+      fn.noRepeat
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>cross between debounce and memoize</p>
+<p>I'm not sure how to explain this, look at the example</p>
+
+
+  <div class='pre p1 fill-light mt0'>fn.noRepeat</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> arr = []
+<span class="hljs-keyword">const</span> once = noRepeat(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> { arr.push(val); <span class="hljs-keyword">return</span> arr })
+once(<span class="hljs-number">1</span>) <span class="hljs-comment">// -&gt; [1]</span>
+once(<span class="hljs-number">1</span>) <span class="hljs-comment">// -&gt; [1]</span>
+once(<span class="hljs-number">2</span>) <span class="hljs-comment">// -&gt; [1, 2]</span>
+once(<span class="hljs-number">2</span>) <span class="hljs-comment">// -&gt; [1, 2]</span>
+once(<span class="hljs-number">1</span>) <span class="hljs-comment">// -&gt; [1, 2, 1]</span></pre>
     
   
 
