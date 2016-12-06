@@ -56,3 +56,38 @@ export const manageState = ({Component, initialState}) => {
   })
 }
 
+/**
+ * @name react.withState
+ *
+ * @desc
+ * Higher-order component abstraction for adding state management to a dumb component.
+ *
+ * provides these props:
+ * - state
+ * - setState
+ *
+ * @example
+ * const Counter = ({state, setState}) =>
+ *   <div>
+ *     {state}
+ *     <button onClick={() => setState(state + 1)}>
+ *       Increment
+ *     </button>
+ *   </div>
+ *
+ * const manageCounterState = withState({initialState: 0})
+ * const ManagedCounter = manageCounterState(Counter)
+ * <ManagedCounter />
+ */
+export const withState = ({initialState}) => Component =>
+  React.createClass({
+    getInitialState: always(initialState),
+    render: function () {
+      return <Component
+        {...this.props}
+        state={this.state}
+        setState={state => this.setState(state)}
+      />
+    }
+  })
+

@@ -3,8 +3,8 @@
 import React from 'react'
 import { mount } from 'enzyme'
 
-test('react.manageState', () => {
-  const { manageState } = require('./react')
+test('react.withState', () => {
+  const { withState } = require('./react')
 
   const Counter = ({state: {n}, setState}) =>
     <div>
@@ -14,7 +14,7 @@ test('react.manageState', () => {
       </button>
     </div>
 
-  const StatefulCounter = manageState({Component: Counter, initialState: {n: 0}})
+  const StatefulCounter = withState({initialState: {n: 0}})(Counter)
 
   const counterA = mount(
     <StatefulCounter />
