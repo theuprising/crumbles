@@ -42,14 +42,17 @@ export const combine = (...containers) => state => (
  *
  * <ManagedCounter />
  */
-export const manageState = ({Component, initialState}) => React.createClass({
-  getInitialState: always(initialState),
-  render: function () {
-    return <Component
-      {...this.props}
-      state={this.state}
-      setState={state => this.setState(state)}
-    />
-  }
-})
+export const manageState = ({Component, initialState}) => {
+  console.warn('crumbles: react.manageState is deprecated. use react.withState instead.')
+  return React.createClass({
+    getInitialState: always(initialState),
+    render: function () {
+      return <Component
+        {...this.props}
+        state={this.state}
+        setState={state => this.setState(state)}
+      />
+    }
+  })
+}
 
