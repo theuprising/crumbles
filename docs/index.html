@@ -115,6 +115,26 @@
               
                 
                 <li><a
+                  href='#reactwithstate'
+                  class="">
+                  react.withState
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#reactwithlifecycle'
+                  class="">
+                  react.withLifecycle
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#capitalize'
                   class="">
                   capitalize
@@ -944,6 +964,119 @@ const ManagedCounter = manageState({Component: Counter, initialState: 0})
 
 &lt;ManagedCounter /&gt;</pre>
     
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='reactwithstate'>
+      react.withState
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Higher-order component abstraction for adding state management to a dumb component.</p>
+<p>provides these props:</p>
+<ul>
+<li>state</li>
+<li>setState</li>
+</ul>
+
+
+  <div class='pre p1 fill-light mt0'>react.withState</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>const Counter = ({state, setState}) =&gt;
+  &lt;div&gt;
+    {state}
+    &lt;button onClick={() =&gt; setState(state + 1)}&gt;
+      Increment
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+const manageCounterState = withState({initialState: 0})
+const ManagedCounter = manageCounterState(Counter)
+&lt;ManagedCounter /&gt;</pre>
+    
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='reactwithlifecycle'>
+      react.withLifecycle
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Higher-order component abstraction for adding lifecycle methods to a dumb component.</p>
+
+
+  <div class='pre p1 fill-light mt0'>react.withLifecycle</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
   
 
   

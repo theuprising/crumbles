@@ -17,7 +17,7 @@ export const combine = (...containers) => state => (
 )
 
 /**
- * @name react.manageState
+ * @name DEPRECATED react.manageState
  *
  * @desc
  * Higher-order component abstraction for adding state management to a dumb component.
