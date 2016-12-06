@@ -105,9 +105,9 @@
               
                 
                 <li><a
-                  href='#reactmanagestate'
+                  href='#undefined'
                   class="">
-                  react.manageState
+                  
                   
                 </a>
                 
@@ -910,8 +910,8 @@ once(<span class="hljs-number">1</span>) <span class="hljs-comment">// -&gt; [1,
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='reactmanagestate'>
-      react.manageState
+    <h3 class='fl m0' id='undefined'>
+      
     </h3>
     
     
@@ -930,7 +930,7 @@ once(<span class="hljs-number">1</span>) <span class="hljs-comment">// -&gt; [1,
 </ul>
 
 
-  <div class='pre p1 fill-light mt0'>react.manageState</div>
+  <div class='pre p1 fill-light mt0'></div>
 
   
 
@@ -1022,12 +1022,12 @@ const ManagedCounter = manageState({Component: Counter, initialState: 0})
       <pre class='p1 overflow-auto round fill-light'>const Counter = ({state, setState}) =&gt;
   &lt;div&gt;
     {state}
-    &lt;button onClick={() =&gt; setState(state + 1)}&gt;
+    &lt;button onClick={() =&gt; setState({count: state.count + 1})}&gt;
       Increment
     &lt;/button&gt;
   &lt;/div&gt;
 
-const manageCounterState = withState({initialState: 0})
+const manageCounterState = withState({count: 0})
 const ManagedCounter = manageCounterState(Counter)
 &lt;ManagedCounter /&gt;</pre>
     
