@@ -70,16 +70,16 @@ export const manageState = ({Component, initialState}) => {
  * const Counter = ({state, setState}) =>
  *   <div>
  *     {state}
- *     <button onClick={() => setState(state + 1)}>
+ *     <button onClick={() => setState({count: state.count + 1})}>
  *       Increment
  *     </button>
  *   </div>
  *
- * const manageCounterState = withState({initialState: 0})
+ * const manageCounterState = withState({count: 0})
  * const ManagedCounter = manageCounterState(Counter)
  * <ManagedCounter />
  */
-export const withState = ({initialState}) => Component =>
+export const withState = initialState => Component =>
   React.createClass({
     getInitialState: always(initialState),
     render: function () {
