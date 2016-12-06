@@ -91,3 +91,20 @@ export const withState = ({initialState}) => Component =>
     }
   })
 
+/**
+ * @name react.withLifecycle
+ *
+ * @desc
+ * Higher-order component abstraction for adding lifecycle methods to a dumb component.
+ *
+ */
+export const withLifecycle = lifecycle => Component =>
+  React.createClass({
+    ...{
+      render: function () {
+        return <Component {...this.props} />
+      },
+      ...lifecycle
+    }
+  })
+
