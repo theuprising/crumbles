@@ -135,6 +135,16 @@
               
                 
                 <li><a
+                  href='#reactwithref'
+                  class="">
+                  react.withRef
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
                   href='#capitalize'
                   class="">
                   capitalize
@@ -1077,6 +1087,60 @@ const ManagedCounter = manageCounterState(Counter)
 
   
 
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+            <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='reactwithref'>
+      react.withRef
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Higher-order component abstraction for building a dumb component with a ref to itself</p>
+<p>passes a new prop into the component: <code>el</code>, which is the ref.</p>
+
+
+  <div class='pre p1 fill-light mt0'>react.withRef</div>
+
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> Dummy = <span class="hljs-function">(<span class="hljs-params">{el}</span>) =&gt;</span> &lt;span&gt;Ref is: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{el}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>
+<span class="hljs-keyword">const</span> DummyWithSelfRef = withRef(Dummy)</pre>
+    
   
 
   
