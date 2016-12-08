@@ -34,13 +34,13 @@ test('react.withState', () => {
   expect(counterB.text()).toEqual('1Increment')
 })
 
-test('react.withLifecycle', () => {
-  const { withLifecycle } = require('./react')
-  expect(true).toBe(false)
-}
+// test('react.withLifecycle', () => {
+//   const { withLifecycle } = require('./react')
+//   expect(true).toBe(false)
+// })
 
-test('react.withRef', () => {
-  const { withRef } = require('./react')
-  expect(true).toBe(false)
-}
+// test('react.withRef', () => {
+//   const { withRef } = require('./react')
+//   expect(true).toBe(false)
+// })
 

@@ -1,7 +1,7 @@
 import React from 'react'
-import { map, addIndex, always } from 'ramda'
+import R from 'ramda'
 
-const mapWithIndex = addIndex(map)
+const mapWithIndex = R.addIndex(R.map)
 
 // combine : ...Component -> Any -> Component
 export const combine = (...containers) => state => (
@@ -45,7 +45,7 @@ export const combine = (...containers) => state => (
 export const manageState = ({Component, initialState}) => {
   console.warn('crumbles: react.manageState is deprecated. use react.withState instead.')
   return React.createClass({
-    getInitialState: always(initialState),
+    getInitialState: R.always(initialState),
     render: function () {
       return <Component
         {...this.props}
@@ -81,7 +81,7 @@ export const manageState = ({Component, initialState}) => {
  */
 export const withState = initialState => Component =>
   React.createClass({
-    getInitialState: always(initialState),
+    getInitialState: R.always(initialState),
     render: function () {
       return <Component
         {...this.props}
@@ -121,12 +121,12 @@ export const withLifecycle = lifecycle => Component =>
  * const DummyWithSelfRef = withRef(Dummy)
  */
 
-const withRef = (() => {
+export const withRef = (() => {
   const ownProps = ['state', 'setState']
   const omitOwnProps = R.omit(ownProps)
 
   return R.pipe(
-    react.withState({el: null}),
+    withState({el: null}),
     Component => props => {
       const { state, setState } = props
       return (
