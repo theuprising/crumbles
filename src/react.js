@@ -108,3 +108,35 @@ export const withLifecycle = lifecycle => Component =>
     }
   })
 
+/**
+ * @name react.withRef
+ *
+ * @desc
+ * Higher-order component abstraction for building a dumb component with a ref to itself
+ *
+ * passes a new prop into the component: `el`, which is the ref.
+ *
+ * @example
+ * const Dummy = ({el}) => <span>Ref is: <pre>{el}</pre></span>
+ * const DummyWithSelfRef = withRef(Dummy)
+ */
+
+const withRef = (() => {
+  const ownProps = ['state', 'setState']
+  const omitOwnProps = R.omit(ownProps)
+
+  return R.pipe(
+    react.withState({el: null}),
+    Component => props => {
+      const { state, setState } = props
+      return (
+        <Component
+          ref={el => setState({el})}
+          el={state.el}
+          {...omitOwnProps(props)}
+        />
+      )
+    }
+  )
+})()
+
