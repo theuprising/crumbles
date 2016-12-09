@@ -122,7 +122,7 @@ export const withLifecycle = lifecycle => Component =>
  *   el.innerHTML = '<em>Hello!</em>'
  * }
  *
- * const Italic = mount(mountItalic)
+ * const Italic = mountable(mountItalic)
  *
  * render(<Italic />, document.body)
  */

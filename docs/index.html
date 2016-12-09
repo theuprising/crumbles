@@ -135,9 +135,9 @@
               
                 
                 <li><a
-                  href='#reactwithref'
+                  href='#reactmountable'
                   class="">
-                  react.withRef
+                  react.mountable
                   
                 </a>
                 
@@ -1104,19 +1104,19 @@ const ManagedCounter = manageCounterState(Counter)
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='reactwithref'>
-      react.withRef
+    <h3 class='fl m0' id='reactmountable'>
+      react.mountable
     </h3>
     
     
   </div>
   
 
-  <p>Higher-order component abstraction for building a dumb component with a ref to itself</p>
-<p>passes a new prop into the component: <code>el</code>, which is the ref.</p>
+  <p>Turn a non-react-aware function that expects a domnode
+to mount into into a Component</p>
 
 
-  <div class='pre p1 fill-light mt0'>react.withRef</div>
+  <div class='pre p1 fill-light mt0'>react.mountable</div>
 
   
 
@@ -1138,8 +1138,13 @@ const ManagedCounter = manageCounterState(Counter)
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> Dummy = <span class="hljs-function">(<span class="hljs-params">{el}</span>) =&gt;</span> &lt;span&gt;Ref is: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{el}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>
-<span class="hljs-keyword">const</span> DummyWithSelfRef = withRef(Dummy)</pre>
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> mountItalic = <span class="hljs-function"><span class="hljs-params">el</span> =&gt;</span> {
+  el.innerHTML = <span class="hljs-string">'&lt;em&gt;Hello!&lt;/em&gt;'</span>
+}
+
+<span class="hljs-keyword">const</span> Italic = mount(mountItalic)
+
+render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Italic</span> /&gt;</span>, document.body)</span></pre>
     
   
 
