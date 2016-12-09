@@ -39,8 +39,15 @@ test('react.withState', () => {
 //   expect(true).toBe(false)
 // })
 
-// test('react.withRef', () => {
-//   const { withRef } = require('./react')
-//   expect(true).toBe(false)
-// })
+test('react.mountable', () => {
+  const { mountable } = require('./react')
+
+  const mountHello = el => {
+    el.innerHTML = 'Hello!'
+  }
+  const Hello = mountable(mountHello)
+  const mounted = mount(<Hello />)
+
+  expect(mounted.text()).toEqual('Hello!')
+})
 

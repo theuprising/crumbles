@@ -109,34 +109,32 @@ export const withLifecycle = lifecycle => Component =>
   })
 
 /**
- * @name react.withRef
+ * @name react.mountable
+ *
+ * @sig (DOM -> Side Effects) -> Component
  *
  * @desc
- * Higher-order component abstraction for building a dumb component with a ref to itself
- *
- * passes a new prop into the component: `el`, which is the ref.
+ * Turn a non-react-aware function that expects a domnode
+ * to mount into into a Component
  *
  * @example
- * const Dummy = ({el}) => <span>Ref is: <pre>{el}</pre></span>
- * const DummyWithSelfRef = withRef(Dummy)
+ * const mountItalic = el => {
+ *   el.innerHTML = '<em>Hello!</em>'
+ * }
+ *
+ * const Italic = mount(mountItalic)
+ *
+ * render(<Italic />, document.body)
  */
 
-export const withRef = (() => {
-  const ownProps = ['state', 'setState']
-  const omitOwnProps = R.omit(ownProps)
-
-  return R.pipe(
-    withState({el: null}),
-    Component => props => {
-      const { state, setState } = props
-      return (
-        <Component
-          ref={el => setState({el})}
-          el={state.el}
-          {...omitOwnProps(props)}
-        />
-      )
+export const mountable = mountFn => {
+  let div
+  return React.createClass({
+    componentDidMount: function () { this.forceUpdate() },
+    render: () => {
+      if (div) mountFn(div)
+      return <div ref={el => { div = el }} />
     }
-  )
-})()
+  })
+}
 
