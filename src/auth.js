@@ -3,6 +3,8 @@
 import { encode } from './base64'
 
 /**
+ * @name auth.basicAuthHeader
+ * @desc
  * generate a header for http basic auth
  * @example
  * const username = 'user'

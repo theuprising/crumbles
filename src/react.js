@@ -3,7 +3,13 @@ import R from 'ramda'
 
 const mapWithIndex = R.addIndex(R.map)
 
-// combine : ...Component -> Any -> Component
+/**
+ * @name react.combine
+ * @desc
+ * ```
+ * combine :: ...Component -> Any -> Component
+ * ```
+ */
 export const combine = (...containers) => state => (
   <div>
     {
@@ -95,8 +101,18 @@ export const withState = initialState => Component =>
  * @name react.withLifecycle
  *
  * @desc
+ * ```
+ * withLifecycle :: { [key: string]: function } -> Component -> Component
+ * ```
  * Higher-order component abstraction for adding lifecycle methods to a dumb component.
  *
+ * @example
+ * const logOnMount = withLifecycle({
+ *   componentDidMount: () => console.log('mounted')
+ * })
+ *
+ * const Component = () => <div />
+ * const LoggingComponent = logOnMount(Component)
  */
 export const withLifecycle = lifecycle => Component =>
   React.createClass({
@@ -111,9 +127,10 @@ export const withLifecycle = lifecycle => Component =>
 /**
  * @name react.mountable
  *
- * @sig (DOM -> Side Effects) -> Component
- *
  * @desc
+ * ```
+ * (DOM -> Side Effects) -> Component
+ * ```
  * Turn a non-react-aware function that expects a domnode
  * to mount into into a Component
  *

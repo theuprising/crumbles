@@ -1,6 +1,8 @@
 // @flow
 
 /**
+ * @name array.choose
+ * @desc
  * choose randomly from an array
  * @example
  * const arr = [1, 2]

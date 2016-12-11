@@ -5,8 +5,13 @@ import { choose } from '../array'
 import { curry } from 'ramda'
 import inspect from '../inspect'
 
-// console.log-like log function
-// log : ...any -> null
+/**
+ * @name log.log
+ * @desc
+ * ```
+ * (...values) -> void
+ * ```
+ */
 export const log = (...values) => {
   if (JSON.stringify(process.env.NODE_ENV) !== JSON.stringify('production')) {
     try {
@@ -21,24 +26,46 @@ export const log = (...values) => {
   return null
 }
 
-// binary curried passthrough log function
-//
-// info('array', [1, 2, 3])
-// ^ returns [1, 2, 3]
-//   calls cosnole.log('array', [1, 2, 3])
-//
-// [1, 2, 3].map(info('array item'))
-// ^ returns [1, 2, 3]
-//   calls console.log('array item', [each array item])
-//
-// info : a -> b -> b
+/**
+ * @name log.info
+ *
+ * @desc
+ * binary curried passthrough log function
+ *
+ * @example
+ * info('array', [1, 2, 3])
+ * ^ returns [1, 2, 3]
+ *   calls cosnole.log('array', [1, 2, 3])
+ *
+ * @example
+ * [1, 2, 3].map(info('array item'))
+ * ^ returns [1, 2, 3]
+ *   calls console.log('array item', [each array item])
+ *
+ * info : a -> b -> b
+ */
 export const info = curry((msg, v) => { log(msg, v); return v })
 
-// unary passthrough log function
-// spy : a -> a
+/**
+ * @name log.spy
+ *
+ * @desc
+ * ```
+ * a -> a
+ * ```
+ * unary passthrough log function
+ */
 export const spy = info('spy')
 
-// nullary side effect
+/**
+ * @name log.affirm
+ *
+ * @desc
+ * ```
+ * void -> void
+ * ```
+ * says something nice
+ */
 export const affirm = () =>
   log(
     choose([

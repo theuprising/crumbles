@@ -13,15 +13,21 @@ import { compose as comp, join, map, split, head, tail, complement, flip, contai
 export { toLower, toUpper }
 
 /**
- * @function string.capitalize
+ * @name string.capitalize
+ * @desc
  * capitalize a string
+ * @example
+ * capitalize('hello there') // => 'Hello there'
  */
 export const capitalize: Transformer = str =>
   `${toUpper(head(str))}${tail(str)}`
 
 /**
- * @function string.uncapitalize
+ * @name string.uncapitalize
+ * @desc
  * uncapitalize a string
+ * @example
+ * uncapitalize('Hello There') // => 'hello There'
  */
 export const uncapitalize: Transformer = str =>
   `${toLower(head(str))}${tail(str)}`
@@ -31,11 +37,12 @@ const delimToFormat = (delim: string): Format => ({
   to: join(delim)
 })
 
-// https://www.gpo.gov/fdsys/pkg/GPO-STYLEMANUAL-2008/html/GPO-STYLEMANUAL-2008-5.htm
-// section 3.49.
 /**
- * @const wordsNotCapitalizedInTitles
+ * @name string.wordsNotCapitalizedInTitles
+ * @desc
  * an array of the words not capitalized in titles
+ *
+ * from section 3.49 [here](https://www.gpo.gov/fdsys/pkg/GPO-STYLEMANUAL-2008/html/GPO-STYLEMANUAL-2008-5.htm)
  */
 export const wordsNotCapitalizedInTitles = [
   'a', 'an', 'the', 'at', 'by', 'for', 'in', 'of', 'on', 'to', 'up', 'and', 'as', 'but', 'or', 'nor'
@@ -43,8 +50,12 @@ export const wordsNotCapitalizedInTitles = [
 const shouldBeCapitalizedInTitle = complement(flip(contains)(wordsNotCapitalizedInTitles))
 
 /**
- * @const string.formats
+ * @name string.formats
+ * @desc
  * a collection of string formats.
+ * ```
+ * { camel, kebab, snake, space, sentence, title }
+ * ```
  */
 export const formats = ((): Formats => {
   const camel = {
@@ -77,8 +88,13 @@ export const formats = ((): Formats => {
 })()
 
 /**
- * @function string.convert
- * convert a string between two formats `(Format, Format) -> string -> string`
+ * @name string.convert
+ * @sig (Format, Format) -> string -> string
+ * @desc
+ * convert a string between two formats
+ * @example
+ * const camelToSnake = convert(formats.camel, formats.snake)
+ * camelToSnake('camelToSnake') // => camel_to_snake
  */
 export const convert = (from: Format, to: Format): Transformer => comp(to.to, from.from)
 

@@ -3,6 +3,8 @@
 const parseRegex = /^(.*) <(.*)>$/
 
 /**
+ * @name email.parseAddress
+ * @desc
  * Parse an email address string
  * @example
  * const { email, name } = parseAddress('Andrew <a@monks.co>')
